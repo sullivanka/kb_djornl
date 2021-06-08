@@ -470,8 +470,8 @@ export const renderTable = ({ table, cytoscapeInstance, highlight, appState }) =
   const sortFn = (node1, node2) => {
     const node1Val = node1.data()[sortOn];
     const node2Val = node2.data()[sortOn];
-    const gt = Number(node1Val > node2Val);
-    const eq = Number(node1Val == node2Val);
+    const gt = Number(JSON.stringify(node1Val) > JSON.stringify(node2Val));
+    const eq = Number(JSON.stringify(node1Val) === JSON.stringify(node2Val));
     // flip the sort for extra columns
     const flip = sortOn in columnsExtra ? 1 : -1;
     return flip * sortReverse * (-1 + eq + 2 * gt); // eslint-disable-line no-mixed-operators
