@@ -6,5 +6,5 @@ mounted as a volume so that it will be accessible after the tests run.
 HEREDOC
 
 # remove exported coverage data if it exists
-test -d /data/test_coverage && rm -rf /data/test_coverage
-cp -r /kb/module/work/test_coverage /data/test_coverage
+test -d $HOME/test_coverage && rm -rf $HOME/test_coverage
+cp -r /kb/module/work/test_coverage $HOME/test_coverage
