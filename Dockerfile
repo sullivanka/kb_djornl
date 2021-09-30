@@ -16,6 +16,9 @@ RUN pip install --extra-index-url https://pypi.anaconda.org/kbase/simple \
 # Node and node requirements
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
+RUN echo Yoohoo npm $(node --version)
+RUN echo Where are you $(which npm)
+RUN echo my little pigeon? $(npm --version)
 COPY ./package.json /kb/module/package.json
 RUN NO_POSTINSTALL=true npm install --production
 RUN npm install webpack-cli webpack
