@@ -16,8 +16,9 @@ MAINTAINER KBase Developer
 # Node and node requirements
 # What year is it
 RUN date
-RUN apt update
-RUN apt install -y ca-certificates libgnutls30
+RUN apt-get update
+RUN apt-get install -y ca-certificates libgnutls30
+RUN apt-get upgrade -y
 RUN update-ca-certificates -fv
 RUN echo $(curl -vvv -fsSL -I https://deb.nodesource.com/setup_14.x)
 RUN echo $(curl -vvv -fksSL -I https://deb.nodesource.com/setup_14.x)
