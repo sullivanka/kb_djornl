@@ -1,28 +1,23 @@
 FROM kbase/sdkbase2:python
 MAINTAINER KBase Developer
 
-# RUN mkdir -p /kb/module/work
-# WORKDIR /kb/module
-# Python and R requirements
-# RUN conda update -n base -c defaults conda
-# COPY ./data/rwrtools.yml /kb/module/data/rwrtools.yml
-# COPY ./scripts/rwrtools-env-create.sh /kb/module/scripts/rwrtools-env-create.sh
-# RUN ./scripts/rwrtools-env-create.sh
-# COPY ./requirements.kb_sdk.txt /kb/module/requirements.kb_sdk.txt
-# RUN pip install -r requirements.kb_sdk.txt
-# COPY ./requirements.txt /kb/module/requirements.txt
-# RUN pip install --extra-index-url https://pypi.anaconda.org/kbase/simple \
-#    -r requirements.txt
-# Node and node requirements
-# What year is it
-RUN date
 RUN apt-get update
 RUN apt-get install -y ca-certificates libgnutls30
 RUN apt-get upgrade -y
 RUN update-ca-certificates -fv
-RUN echo $(curl -vvv -fsSL -I https://deb.nodesource.com/setup_14.x)
-RUN echo $(curl -vvv -fksSL -I https://deb.nodesource.com/setup_14.x)
-RUN echo $(curl -fsSL https://deb.nodesource.com/setup_16.x)
+RUN mkdir -p /kb/module/work
+WORKDIR /kb/module
+# Python and R requirements
+RUN conda update -n base -c defaults conda
+COPY ./data/rwrtools.yml /kb/module/data/rwrtools.yml
+COPY ./scripts/rwrtools-env-create.sh /kb/module/scripts/rwrtools-env-create.sh
+RUN ./scripts/rwrtools-env-create.sh
+COPY ./requirements.kb_sdk.txt /kb/module/requirements.kb_sdk.txt
+RUN pip install -r requirements.kb_sdk.txt
+COPY ./requirements.txt /kb/module/requirements.txt
+RUN pip install --extra-index-url https://pypi.anaconda.org/kbase/simple \
+   -r requirements.txt
+# Node and node requirements
 RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
 RUN echo $PATH
