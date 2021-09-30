@@ -12,7 +12,7 @@ MAINTAINER KBase Developer
 # RUN pip install -r requirements.kb_sdk.txt
 # COPY ./requirements.txt /kb/module/requirements.txt
 # RUN pip install --extra-index-url https://pypi.anaconda.org/kbase/simple \
-    -r requirements.txt
+#    -r requirements.txt
 # Node and node requirements
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
