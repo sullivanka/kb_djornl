@@ -14,6 +14,8 @@ MAINTAINER KBase Developer
 # RUN pip install --extra-index-url https://pypi.anaconda.org/kbase/simple \
 #    -r requirements.txt
 # Node and node requirements
+# What year is it
+RUN date
 RUN echo $(curl -fsSL https://deb.nodesource.com/setup_14.x)
 RUN echo $(curl -fsSL https://deb.nodesource.com/setup_16.x)
 RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash -
