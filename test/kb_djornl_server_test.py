@@ -153,6 +153,7 @@ class kb_djornlTest(unittest.TestCase):  # pylint: disable=invalid-name
     > the test method names with respect to the built-in ordering for strings.
     """
     # @unittest.skip("Skip test for debugging")
+    @unittest.skip("Skip test for debugging")
     def test_00_rwr_cv_multiplexes(self):
         """Run RWR CV on each available multiplex"""
         multiplexes = [
@@ -225,6 +226,7 @@ class kb_djornlTest(unittest.TestCase):  # pylint: disable=invalid-name
         graph_state_json = graph_state_obj["data"][0]["data"]["description"]
         self.assertEqual(graph_state_json, "{}")
 
+    @unittest.skip("Skip test for debugging")
     def test_00_run_rwr_loe_multiplexes(self):
         """Run RWR LOE on each available multiplex"""
         multiplexes = [
@@ -246,6 +248,7 @@ class kb_djornlTest(unittest.TestCase):  # pylint: disable=invalid-name
                     print(f"""Multiplex "{multiplex}" failed for RWR_LOE.""")
                     continue
 
+    @unittest.skip("Skip test for debugging")
     def test_01_run_rwr_loe_context_analysis(self):
         """RWR LOE context_analysis test case"""
         self.serviceImpl.run_rwr_loe(
@@ -267,6 +270,7 @@ class kb_djornlTest(unittest.TestCase):  # pylint: disable=invalid-name
             },
         )
 
+    @unittest.skip("Skip test for debugging")
     def test_01_run_rwr_loe_target(self):
         """RWR LOE target test case"""
         self.serviceImpl.run_rwr_loe(

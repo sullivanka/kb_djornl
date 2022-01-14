@@ -111,6 +111,7 @@ def fork_rwr_cv(reports_path, params, dfu):
                 --restart='{cv_restart}'
                 --tau='{cv_tau}'
                 --numranked='1'
+                --outdir='/opt/work/tmp'
                 --out-fullranks='/opt/work/tmp/fullranks.tsv'
                 --out-medianranks='/opt/work/tmp/medianranks.tsv'
                 --verbose
