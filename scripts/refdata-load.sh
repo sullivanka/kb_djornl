@@ -12,7 +12,7 @@ if [[ "$KB_ENV" == 'kbase' ]]; then
 elif [[ "$KB_ENV" == 'ci' ]]; then
     RWRTOOLS_BLOB_URL='';
 elif [[ "$KB_ENV" == 'appdev' ]]; then
-    RWRTOOLS_BLOB_URL='https://appdev.kbase.us/services/shock-api/node/915d4518-bb3e-4f93-9b78-a12306e6499b?download_raw';
+    RWRTOOLS_BLOB_URL='https://appdev.kbase.us/services/shock-api/node/403cef42-7e23-4160-a73f-0f3c26a878e5?download_raw';
 fi
 # Retrieve static data relation engine
 git clone --depth 1 \

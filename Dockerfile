@@ -1,9 +1,14 @@
-FROM kbase/sdkbase2:python
+FROM python:3.10
 MAINTAINER KBase developer
 
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN mkdir -p /kb/module/work
+COPY ./data/miniconda.sha256 /miniconda.sha256
+COPY ./scripts/miniconda-install.sh /kb/module/scripts/miniconda-install.sh
+RUN /kb/module/scripts/miniconda-install.sh
+RUN exit 1
+
 WORKDIR /kb/module
 # Python and R requirements
 RUN conda update -n base -c defaults conda

@@ -2,3 +2,6 @@ test_local
 sdk.cfg
 .git
 node_modules
+tmp
+.kbdj37
+RWRtools
