@@ -103,7 +103,7 @@ def fork_rwr_cv(reports_path, params, dfu):
         rwrtools_env["RWR_TOOLS_REPO"] = rwrtools_data_path
     rwrtools_env[
         "RWR_TOOLS_COMMAND"
-    ] = f"""Rscript RWR_CV.R
+    ] = f"""Rscript inst/scripts/run_cv.R
                 --data='multiplexes/{cv_multiplex}'
                 --geneset='{geneset_path}'
                 --method='{cv_method}'
@@ -152,7 +152,7 @@ def fork_rwr_loe(reports_path, params, dfu):  # pylint: disable=too-many-locals
         rwrtools_env["RWR_TOOLS_REPO"] = rwrtools_data_path
     rwrtools_env[
         "RWR_TOOLS_COMMAND"
-    ] = f"""Rscript RWR_LOE.R
+    ] = f"""Rscript inst/scripts/run_loe.R
                 --data='multiplexes/{loe_multiplex}'
                 --geneset1='{geneset_path}'
                 {second_geneset}

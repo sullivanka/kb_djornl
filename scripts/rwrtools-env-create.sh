@@ -3,12 +3,26 @@
 set -x
 set -e
 
-source /miniconda/etc/profile.d/conda.sh
-conda env create -v -f ./data/rwrtools.yml
-conda activate rwrtools
+# Determine environment
+# KB_ENV=$(grep -e kbase_endpoint /kb/module/work/config.properties \
+#     | cut -f3 -d'/' | cut -f1 -d. \
+# )
+KB_ENV='appdev'
+echo Detected environment $KB_ENV
+if [[ "$KB_ENV" == 'kbase' ]]; then
+    RWRTOOLS_BLOB_URL=''
+elif [[ "$KB_ENV" == 'ci' ]]; then
+    RWRTOOLS_BLOB_URL='';
+elif [[ "$KB_ENV" == 'appdev' ]]; then
+    RWRTOOLS_BLOB_URL='https://appdev.kbase.us/services/shock-api/node/403cef42-7e23-4160-a73f-0f3c26a878e5?download_raw';
+fi
+# Retrieve RWR tools and data
+mkdir -p /data/RWRtools
+curl -fsSL -H "Authorization: OAuth $KB_AUTH_TOKEN " \
+  -o /data/RWRtools/RWRtools.tar.gz $RWRTOOLS_BLOB_URL
+cd /data/RWRtools
+tar xzvf RWRtools.tar.gz
 R --no-restore --no-save << HEREDOC
-if (!requireNamespace("BiocManager", quietly = TRUE))
-  install.packages("BiocManager")
-BiocManager::install("remotes")
-BiocManager::install("dkainer/RandomWalkRestartMH")
+install.packages("devtools")
+devtools::install()
 HEREDOC
